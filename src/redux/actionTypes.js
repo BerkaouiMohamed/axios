@@ -1,4 +1,8 @@
-export const ADD_POST="ADD_POST"
-export const DELETE_POST="DELETE_POST"
-export const UPDATE_POST="UPDATE_POST"
-export const FETCHED_POST="FETCHED_POST"
+export const ADD="ADD"
+export const DELETE="DELETE"
+export const EDIT="EDIT"
+export const FETCHING="FETCH"
+
+
+//---------
+

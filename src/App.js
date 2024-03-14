@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
-import Navbar from './componens/Navbar'
-import { Route, Routes } from 'react-router-dom'
-import Home from './componens/Home'
-import Products from './componens/Products'
-import Edit from './Edit'
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Products from "./pages/Products";
+import Cake from "./pages/Cake";
+import Home from "./pages/Home";
+import Navbar from "./Components/Navbar";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
+import { useDispatch } from "react-redux";
+import { fetching } from "./redux/productActions";
 
 function App() {
-  const [products,setProducts]=useState([])
+  const dispatch=useDispatch()
+  useEffect(()=>{dispatch(fetching())},[])
+
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<EditProduct />} />
 
-        <Route path='/' element={<Home  products={products} setProducts={setProducts} />} />
-        <Route path='/products' element={<Products products={products} setProducts={setProducts} />} />
-        <Route path='/edit/:id' element={<Edit  products={products} setProducts={setProducts}  />} />
+        <Route path="/cake" element={<Cake />} />
+        <Route path="/addproduct" element={<AddProduct />} />
+
       </Routes>
-      
-    
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
